@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michael Williams | AI Engineer · Full-Stack Developer · IoT Specialist</title>
+  <meta name="description" content="Michael Williams BEng MSc — AI Engineer, Full-Stack Developer and IoT Specialist with 30+ years experience. Author, course creator and platform builder. London, UK.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .hero-home {
+      background: var(--green);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero-home::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px);
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute; top: -100px; right: -120px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,121,65,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-subtitle {
+  color: rgba(255,255,255,255);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: -10px;
+    }
+
+    .hero-line { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--copper), transparent); }
+    .hero-title { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.2rem; }
+    .hero-title em { font-style: italic; color: var(--copper); }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.62); line-height: 1.85; max-width: 540px; margin-bottom: 2rem; }
+    .open-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(127,166,137,0.15); border: 1px solid rgba(127,166,137,0.3);
+      color: var(--sage); font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 1.3rem;
+    }
+    .open-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 6px rgba(127,166,137,0.6); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+    .role-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+    .role-pill {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75); font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 5px 13px; border-radius: 20px;
+    }
+    .hero-stats-row {
+      display: flex; flex-wrap: wrap; gap: 2.5rem;
+      padding-top: 2rem; margin-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .h-stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 900; color: var(--copper); line-height: 1; }
+    .h-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.38); font-family: 'JetBrains Mono', monospace; margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Hero image area */
+    .hero-photo-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-xl);
+      padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .hero-photo-main {
+      background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-light) 100%);
+      border-radius: var(--r-lg);
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      color: rgba(255,255,255,0.4); font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      border: 2px dashed rgba(255,255,255,0.12); overflow: hidden;
+    }
+    .hero-photo-main i { font-size: 3rem; color: rgba(255,255,255,0.2); }
+    .hero-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-mini {
+      background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+      border-radius: var(--r);
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 6px;
+      color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+      border: 1.5px dashed rgba(255,255,255,0.1); text-align: center; padding: 0.5rem;
+    }
+    .hero-mini i { font-size: 1.5rem; color: var(--copper); opacity: 0.5; }
+
+    /* What I do section */
+    .domain-card {
+      background: var(--white);
+      border: 1px solid var(--light-border);
+      border-radius: var(--r-lg);
+      padding: 2rem 1.6rem;
+      transition: all var(--t) var(--ease);
+      height: 100%;
+    }
+    .domain-card:hover { border-color: var(--copper-border); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .domain-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+
+    /* Project cards */
+    .proj-card {
+      background: var(--white);
+      border: 1px solid var(--light-border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all var(--t) var(--ease);
+      height: 100%;
+    }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--copper-border); }
+    .proj-thumb {
+      aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.45);
+      border-bottom: 1px solid var(--light-border);
+    }
+    .proj-thumb i { font-size: 2.2rem; opacity: 0.35; color: #fff; }
+    .proj-body { padding: 1.4rem; }
+
+    /* CTA band */
+    .cta-band {
+      background: var(--copper);
+      padding: 70px 0; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+    .cta-band h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+    .cta-band p { color: rgba(255,255,255,0.8); }
+    .btn-cta-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--copper);
+      font-weight: 700; font-size: 0.95rem;
+      padding: 14px 32px; border-radius: var(--r);
+      border: 2px solid #fff;
+      transition: all var(--t) var(--ease);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-cta-white:hover { background: transparent; color: #fff; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg fixed-top" id="siteNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-mark">MW</div>
+      <div>
+        <span class="brand-name">Michael <span>Williams</span></span>
+        <span class="brand-sub">BEng(Hons) · MSc · 30+ Years</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="speaking.html">Books & Speaking</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="contact.html">Hire Me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero-home">
+  <div class="hero-glow"></div>
+  <div class="hero-line"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 fade-up">
+        <div class="open-badge"><span class="open-dot"></span>Open to Opportunities · London, UK</div>
+        <h1 class="hero-title">Michael<br><em>Williams</em></h1>
+        <h1 class="hero-subtitle">BEng (Hons) · MSc</h1>
+<br>
+        <p class="hero-desc">AI Engineer, Full-Stack Developer and IoT Specialist with 30+ years experience across hardware R&D, embedded systems, software and AI. Author, course creator and platform builder.</p>
+        <div class="role-pills">
+          <span class="role-pill">AI / LLM Engineer</span>
+          <span class="role-pill">Full-Stack Django Dev</span>
+          <span class="role-pill">IoT / Embedded Systems</span>
+          <span class="role-pill">Robotics</span>
+          <span class="role-pill">Digital Twins</span>
+          <span class="role-pill">Computer Vision</span>
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="about.html" class="btn-copper">View My CV <i class="bi bi-arrow-right"></i></a>
+          <a href="projects.html" class="btn-white">My Projects</a>
+        </div>
+        <div class="hero-stats-row">
+          <div><div class="h-stat-num" data-count="30" data-suffix="+">0+</div><div class="h-stat-lbl">Years Exp.</div></div>
+          <div><div class="h-stat-num" data-count="3">0</div><div class="h-stat-lbl">Live Platforms</div></div>
+          <div><div class="h-stat-num" data-count="15" data-suffix="+">0+</div><div class="h-stat-lbl">Tech Domains</div></div>
+          <div><div class="h-stat-num" data-count="4">0</div><div class="h-stat-lbl">Books Published</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up delay-2">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-main">
+            <i class="bi bi-person-circle"></i>
+            <span>Your photo here</span>
+          </div>
+          <div class="hero-mini-grid">
+            <div class="hero-mini"><i class="bi bi-cpu"></i><span>Circuit Building</span></div>
+            <div class="hero-mini"><i class="bi bi-diagram-3"></i><span>Digital Twins</span></div>
+            <div class="hero-mini"><i class="bi bi-bar-chart-line"></i><span>Dashboards</span></div>
+            <div class="hero-mini"><i class="bi bi-book"></i><span>Published Books</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT I DO ═══════════════════════════════════════════════ -->
+<section class="sec-cream">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="label-tag">What I Do</div>
+      <div class="copper-rule mx-auto"></div>
+      <h2 class="section-heading">End-to-End <em>Engineering</em></h2>
+      <p class="lead-text mx-auto mt-2">From embedded hardware and firmware through to AI-powered cloud platforms — rare depth across the full technology stack.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="domain-card">
+          <span class="domain-icon">🤖</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">Agentic AI & LLM Integration</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Multi-agent pipelines, Claude/GPT/Gemini integration, prompt engineering, AI chatbots and PECR-compliant automation systems.</p>
+          <div><span class="tech-tag">Claude API</span><span class="tech-tag">Python</span><span class="tech-tag">Celery</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="domain-card">
+          <span class="domain-icon">🌐</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">Full-Stack Web Platforms</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Production Django/PostgreSQL platforms with LMS, e-commerce, event management, Stripe/PayPal payments and VPS deployment.</p>
+          <div><span class="tech-tag">Django</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Nginx</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="domain-card">
+          <span class="domain-icon">⚙️</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">IoT & Embedded Systems</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Arduino firmware, MQTT pipelines, sensor R&D and edge-to-cloud IoT architectures. BEng EEE and MSc Sensors & AI foundations.</p>
+          <div><span class="tech-tag">Arduino</span><span class="tech-tag">MQTT</span><span class="tech-tag">C/C++</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="domain-card">
+          <span class="domain-icon">🔬</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">Computer Vision</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">OpenCV and MediaPipe-based image processing pipelines, object detection and vision-based automation for research and industry.</p>
+          <div><span class="tech-tag">OpenCV</span><span class="tech-tag">MediaPipe</span><span class="tech-tag">Python</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="domain-card">
+          <span class="domain-icon">🏗️</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">Digital Twins</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Real-time digital representations of physical systems — sensor data, simulation models and live dashboard monitoring.</p>
+          <div><span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">IoT</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="domain-card">
+          <span class="domain-icon">📚</span>
+          <h5 style="color:var(--green);font-size:1.05rem;margin-bottom:0.5rem;">Author & Educator</h5>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Author of 4+ books on Black Scientists & Inventors. GCSE course creator and technology trainer across AI, IoT and Python.</p>
+          <div><span class="tag-sage">Published Author</span><span class="tag-sage">Course Creator</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED PROJECTS ═════════════════════════════════════ -->
+<section class="sec-white">
+  <div class="container">
+    <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-5 fade-up">
+      <div>
+        <div class="label-tag">Featured Work</div>
+        <div class="copper-rule"></div>
+        <h2 class="section-heading">Platforms Built &amp; <em>Deployed</em></h2>
+      </div>
+      <a href="projects.html" class="btn-ghost">All Projects <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <!-- BSI Platform -->
+      <div class="col-lg-6 fade-up">
+        <div class="proj-card">
+          <div class="proj-thumb" style="background:linear-gradient(135deg,var(--green) 0%,var(--green-light) 100%);">
+            <i class="bi bi-globe2"></i>
+            <span><!-- Replace with screenshot --></span>
+          </div>
+          <div class="proj-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h5 style="color:var(--green);font-size:1rem;margin:0;">Black Scientists &amp; Inventors Platform</h5>
+              <span class="badge-live">Live</span>
+            </div>
+            <p style="font-size:0.87rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;">Full Django/PostgreSQL platform — 700+ indexed pages, LMS with AI-guided courses, 600+ scientist profiles, multi-agent AI outreach, e-commerce and event management.</p>
+            <div class="mb-3"><span class="tech-tag">Django</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Claude API</span><span class="tech-tag">Celery</span></div>
+            <a href="https://blackscientistsandinventors.com" target="_blank" rel="noopener" class="btn-copper" style="font-size:0.83rem;padding:8px 18px;">Visit Platform <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Windrush -->
+      <div class="col-lg-6 fade-up delay-1">
+        <div class="proj-card">
+          <div class="proj-thumb" style="background:linear-gradient(135deg,#2c4a3e 0%,#3d6b57 100%);">
+            <i class="bi bi-bar-chart-line"></i>
+            <span><!-- Replace with screenshot --></span>
+          </div>
+          <div class="proj-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h5 style="color:var(--green);font-size:1rem;margin:0;">Windrush Foundation Digital Evaluation Platform</h5>
+              <span class="badge-live">Live</span>
+            </div>
+            <p style="font-size:0.87rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;">Django/Streamlit/Docker evaluation system with production bot protection, PostgreSQL analytics dashboard — 313 participants, 99% recommendation rate.</p>
+            <div class="mb-3"><span class="tech-tag">Django</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Docker</span></div>
+            <a href="projects.html" class="btn-ghost" style="font-size:0.83rem;padding:8px 18px;">View Details <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Exhibition App -->
+      <div class="col-lg-4 fade-up">
+        <div class="proj-card">
+          <div class="proj-thumb" style="background:linear-gradient(135deg,#3a3a2a 0%,#5a5a38 100%);">
+            <i class="bi bi-people"></i>
+          </div>
+          <div class="proj-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h5 style="color:var(--green);font-size:0.95rem;margin:0;">Windrush 30th Anniversary Exhibition App</h5>
+              <span class="badge-live">Live</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;">Streamlit app used live at the House of Parliament, City Hall and schools across the UK.</p>
+            <div class="mb-3"><span class="tech-tag">Streamlit</span><span class="tech-tag">Python</span></div>
+            <a href="https://wfincolour.streamlit.app/" target="_blank" rel="noopener" style="color:var(--copper);font-size:0.85rem;font-weight:500;">Visit App <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- IoT / Digital Twin placeholder -->
+      <div class="col-lg-4 fade-up delay-1">
+        <div class="proj-card">
+          <div class="proj-thumb" style="background:linear-gradient(135deg,#2a3a4a 0%,#3a5a6a 100%);">
+            <i class="bi bi-cpu"></i>
+          </div>
+          <div class="proj-body">
+            <h5 style="color:var(--green);font-size:0.95rem;margin-bottom:0.5rem;">IoT & Digital Twin Projects</h5>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;">Arduino-based sensor networks, MQTT pipelines, edge-to-cloud data flows and real-time digital twin dashboards.</p>
+            <div class="mb-3"><span class="tech-tag">Arduino</span><span class="tech-tag">MQTT</span><span class="tech-tag">Python</span></div>
+            <a href="projects.html" style="color:var(--copper);font-size:0.85rem;font-weight:500;">View Details <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- JB Natural -->
+      <div class="col-lg-4 fade-up delay-2">
+        <div class="proj-card">
+          <div class="proj-thumb" style="background:linear-gradient(135deg,#3a2a1a 0%,#5a4a2a 100%);">
+            <i class="bi bi-shop"></i>
+          </div>
+          <div class="proj-body">
+            <h5 style="color:var(--green);font-size:0.95rem;margin-bottom:0.5rem;">JB Natural &amp; Organic — E-commerce</h5>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem;">Full Django/PostgreSQL e-commerce redevelopment with product catalogue, consultation booking and gift certificates.</p>
+            <div class="mb-3"><span class="tech-tag">Django</span><span class="tech-tag">Bootstrap 5</span></div>
+            <a href="projects.html" style="color:var(--copper);font-size:0.85rem;font-weight:500;">View Details <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY / WORK IN PROGRESS ═══════════════════════════ -->
+<section class="sec-off">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="label-tag">Behind the Build</div>
+      <div class="copper-rule mx-auto"></div>
+      <h2 class="section-heading">Hardware, Code &amp; <em>Research</em></h2>
+      <p class="lead-text mx-auto mt-2">A glimpse into the physical and digital side of the work — from soldering circuits to building AI-powered dashboards.</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="img-placeholder" style="min-height:240px;">
+          <i class="bi bi-cpu-fill"></i>
+          <strong style="color:rgba(255,255,255,0.5);font-size:12px;">Circuit Building</strong>
+          <span>Arduino · Sensors · PCB</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="img-placeholder" style="min-height:240px;">
+          <i class="bi bi-diagram-3-fill"></i>
+          <strong style="color:rgba(255,255,255,0.5);font-size:12px;">Digital Twins</strong>
+          <span>Simulation · Real-time Data</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="img-placeholder" style="min-height:240px;">
+          <i class="bi bi-bar-chart-steps"></i>
+          <strong style="color:rgba(255,255,255,0.5);font-size:12px;">Analytics Dashboards</strong>
+          <span>Streamlit · PostgreSQL</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 fade-up delay-1">
+        <div class="img-placeholder" style="min-height:200px;">
+          <i class="bi bi-book-fill"></i>
+          <strong style="color:rgba(255,255,255,0.5);font-size:12px;">Published Books</strong>
+          <span>Black Scientists & Inventors Series</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 fade-up delay-2">
+        <div class="img-placeholder" style="min-height:200px;">
+          <i class="bi bi-camera-video-fill"></i>
+          <strong style="color:rgba(255,255,255,0.5);font-size:12px;">Speaking & Events</strong>
+          <span>Panels · Expos · Online Events</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="container position-relative">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-7">
+        <h2>Available for Contracts,<br>Full-Time &amp; Consultancy</h2>
+        <p class="mt-2 mb-0" style="font-size:1.05rem;">AI Engineering · Full-Stack Development · IoT/Robotics · Digital Transformation · STEM Education</p>
+      </div>
+      <div class="col-lg-5 text-lg-end">
+        <a href="contact.html" class="btn-cta-white">Get In Touch <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          <div class="brand-mark">MW</div>
+          <div>
+            <span class="brand-name">Michael <span>Williams</span></span>
+            <span class="brand-sub">BEng · MSc · London, UK</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;line-height:1.8;color:rgba(255,255,255,0.5);">AI Engineer, Full-Stack Developer, IoT Specialist, Author and Course Creator with 30+ years of hands-on engineering experience.</p>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Navigation</div>
+        <a href="about.html">About & CV</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="speaking.html">Books & Speaking</a>
+        <a href="courses.html">Courses</a>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Platforms</div>
+        <a href="https://blackscientistsandinventors.com" target="_blank" rel="noopener">BSI Platform ↗</a>
+        <a href="https://wfincolour.streamlit.app/" target="_blank" rel="noopener">WF Exhibition App ↗</a>
+        <a href="https://github.com/mikeconel" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Get In Touch</div>
+        <p style="font-size:0.86rem;line-height:1.75;margin-bottom:0.9rem;color:rgba(255,255,255,0.5);">Available for AI Engineering, Full-Stack, IoT/Robotics and Digital Transformation roles. Open to contracts, full-time and consultancy.</p>
+        <a href="contact.html" class="btn-copper" style="font-size:0.85rem;padding:9px 20px;">Hire Me <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Michael Williams. All rights reserved.</span>
+      <span style="font-family:'JetBrains Mono',monospace;">London, UK</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
