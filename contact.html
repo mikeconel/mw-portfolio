@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Michael Williams</title>
-  <meta name="description" content="Hire Michael Williams — AI Engineer, Full-Stack Developer, IoT Specialist. Available for contracts, full-time roles, consultancy and speaking engagements. London, UK.">
+  <meta name="description" content="Hire Michael Williams — AI-Powered Systems Engineer. Available for contracts, full-time roles and consultancy. London, UK.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -24,6 +24,7 @@
     .form-control-mw::placeholder { color: rgba(255,255,255,0.28); }
     .form-control-mw:focus { border-color: var(--copper); background: rgba(255,255,255,0.09); }
     .form-control-mw option { background: var(--green); color: #fff; }
+    .form-control-mw.error { border-color: #e05c5c; }
 
     .contact-detail-row {
       display: flex; align-items: flex-start; gap: 14px;
@@ -36,6 +37,19 @@
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
+    /* Honeypot — hidden from humans, bots fill it */
+    .bot-trap { display: none !important; visibility: hidden; }
+
+    #formStatus {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--r);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    #formStatus.success { background: rgba(127,166,137,0.15); border: 1px solid rgba(127,166,137,0.4); color: #7fa689; }
+    #formStatus.error   { background: rgba(224,92,92,0.12);  border: 1px solid rgba(224,92,92,0.3);  color: #e05c5c; }
   </style>
 </head>
 <body>
@@ -47,7 +61,7 @@
       <div class="brand-mark">MW</div>
       <div>
         <span class="brand-name">Michael <span>Williams</span></span>
-        <span class="brand-sub">BEng · MSc · 30+ Years</span>
+        <span class="brand-sub">BEng(Hons) · MSc</span>
       </div>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -57,8 +71,6 @@
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
         <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="speaking.html">Books & Speaking</a></li>
-        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
         <li class="nav-item ms-lg-2"><a class="nav-link nav-cta active" href="contact.html">Hire Me</a></li>
       </ul>
     </div>
@@ -70,7 +82,7 @@
   <div class="container">
     <div class="hero-badge">Get In Touch</div>
     <h1>Let's Work <em>Together</em></h1>
-    <p class="lead">Whether you have a contract role, permanent position, freelance project, speaking enquiry or training need — I'd love to hear from you.</p>
+    <p class="lead">Whether you have a contract role, permanent position, freelance project or training need — I'd love to hear from you.</p>
   </div>
 </section>
 
@@ -97,14 +109,7 @@
             <div class="contact-icon"><i class="bi bi-envelope" style="color:var(--copper);font-size:16px;"></i></div>
             <div>
               <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Email</div>
-              <div style="font-size:0.9rem;color:var(--green);font-weight:500;">michael.williams@bispublishing.co.uk</div>
-            </div>
-          </div>
-          <div class="contact-detail-row">
-            <div class="contact-icon"><i class="bi bi-linkedin" style="color:var(--copper);font-size:16px;"></i></div>
-            <div>
-              <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">LinkedIn</div>
-              <a href="#" style="font-size:0.9rem;color:var(--copper);font-weight:500;">linkedin.com/in/michaelwilliams ↗</a>
+              <div style="font-size:0.9rem;color:var(--green);font-weight:500;">mikieprophet@gmail.com</div>
             </div>
           </div>
           <div class="contact-detail-row">
@@ -112,6 +117,13 @@
             <div>
               <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">GitHub</div>
               <a href="https://github.com/mikeconel" target="_blank" rel="noopener" style="font-size:0.9rem;color:var(--copper);font-weight:500;">github.com/mikeconel ↗</a>
+            </div>
+          </div>
+          <div class="contact-detail-row">
+            <div class="contact-icon"><i class="bi bi-globe2" style="color:var(--copper);font-size:16px;"></i></div>
+            <div>
+              <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Portfolio</div>
+              <a href="https://mikeconel.github.io/mw-portfolio/index.html" target="_blank" rel="noopener" style="font-size:0.9rem;color:var(--copper);font-weight:500;">mikeconel.github.io/mw-portfolio ↗</a>
             </div>
           </div>
         </div>
@@ -130,9 +142,6 @@
               <i class="bi bi-check-circle-fill" style="color:var(--sage);"></i>Technology consultancy
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:0.87rem;color:var(--body-text);">
-              <i class="bi bi-check-circle-fill" style="color:var(--sage);"></i>Speaking engagements
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:0.87rem;color:var(--body-text);">
               <i class="bi bi-check-circle-fill" style="color:var(--sage);"></i>Custom training &amp; workshops
             </div>
           </div>
@@ -145,8 +154,9 @@
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">AI Engineer</span>
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Applied AI / LLM Developer</span>
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Full-Stack Django Dev</span>
+            <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">FastAPI Engineer</span>
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">IoT / Embedded Systems</span>
-            <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Robotics Engineer</span>
+            <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Robotics Perception</span>
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Digital Transformation Lead</span>
             <span class="tech-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);font-size:9.5px;">Technology Consultant</span>
           </div>
@@ -157,18 +167,49 @@
       <div class="col-lg-8 fade-up delay-1">
         <div style="background:var(--green);border-radius:var(--r-xl);padding:2.5rem;border:1px solid rgba(255,255,255,0.06);">
           <div class="label-tag mb-1">Send a Message</div>
-          <h3 style="color:#fff;font-size:1.25rem;margin-bottom:1.6rem;">Tell Me About Your Role or Project</h3>
+          <h3 style="color:#fff;font-size:1.25rem;margin-bottom:0.5rem;">Tell Me About Your Role or Project</h3>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;margin-bottom:1.6rem;">Your message will be sent directly to mikieprophet@gmail.com</p>
+
+          <!--
+            ════════════════════════════════════════════════════════
+            SETUP INSTRUCTIONS — READ BEFORE GOING LIVE
+            ════════════════════════════════════════════════════════
+            This form uses Formspree (free tier, 50 submissions/month).
+
+            STEP 1: Go to https://formspree.io and create a free account.
+            STEP 2: Create a new form, set the destination email to:
+                    mikieprophet@gmail.com
+            STEP 3: Copy your form endpoint (looks like):
+                    https://formspree.io/f/xyzabcde
+            STEP 4: Replace YOUR_FORMSPREE_ID below with just the ID part
+                    e.g. if your endpoint is https://formspree.io/f/xyzabcde
+                    set: const FORMSPREE_ID = 'xyzabcde';
+            ════════════════════════════════════════════════════════
+
+            BOT PROTECTION IN PLACE:
+            1. Honeypot field (_gotcha) — bots fill hidden fields; Formspree
+               auto-rejects submissions where _gotcha is filled
+            2. Time-based guard — form submits blocked if < 3 seconds from
+               page load (bots submit instantly)
+            3. Client-side rate limit — max 3 submissions per 10-minute window
+            4. Required field validation before submit
+          -->
 
           <form id="contactForm" novalidate>
+            <!-- ── HONEYPOT (invisible to humans, bots fill this) ── -->
+            <div class="bot-trap" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
             <!-- Row 1 -->
             <div class="row g-3 mb-3">
               <div class="col-md-6">
                 <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Your Name *</label>
-                <input type="text" class="form-control-mw" placeholder="e.g. Sarah Johnson" required>
+                <input id="f-name" type="text" name="name" class="form-control-mw" placeholder="e.g. Sarah Johnson" required autocomplete="name">
               </div>
               <div class="col-md-6">
                 <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Email Address *</label>
-                <input type="email" class="form-control-mw" placeholder="your@email.com" required>
+                <input id="f-email" type="email" name="email" class="form-control-mw" placeholder="your@email.com" required autocomplete="email">
               </div>
             </div>
 
@@ -176,18 +217,16 @@
             <div class="row g-3 mb-3">
               <div class="col-md-6">
                 <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Company / Organisation</label>
-                <input type="text" class="form-control-mw" placeholder="Company / agency / recruiter">
+                <input type="text" name="company" class="form-control-mw" placeholder="Company / agency / recruiter" autocomplete="organization">
               </div>
               <div class="col-md-6">
                 <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Enquiry Type *</label>
-                <select class="form-control-mw" required>
+                <select id="f-type" name="enquiry_type" class="form-control-mw" required>
                   <option value="">Select...</option>
                   <option>Contract / freelance opportunity</option>
                   <option>Permanent employment opportunity</option>
                   <option>Technology consultancy</option>
-                  <option>Speaking engagement / keynote</option>
                   <option>Custom training / workshop</option>
-                  <option>Course or publishing enquiry</option>
                   <option>General enquiry</option>
                 </select>
               </div>
@@ -196,7 +235,7 @@
             <!-- Day rate -->
             <div class="mb-3">
               <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Day Rate / Salary (optional)</label>
-              <select class="form-control-mw">
+              <select name="budget" class="form-control-mw">
                 <option value="">Prefer not to say at this stage</option>
                 <option>Contract: Under £500/day</option>
                 <option>Contract: £500 – £650/day</option>
@@ -214,13 +253,13 @@
             <!-- Message -->
             <div class="mb-3">
               <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Message *</label>
-              <textarea class="form-control-mw" rows="5" placeholder="Tell me about the role, project or event. Include tech stack, duration, location (remote / hybrid / on-site) and any other relevant details..." required></textarea>
+              <textarea id="f-msg" name="message" class="form-control-mw" rows="5" placeholder="Tell me about the role, project or workshop. Include tech stack, duration, location (remote / hybrid / on-site) and any other relevant details..." required></textarea>
             </div>
 
             <!-- Start date -->
             <div class="mb-4">
               <label style="font-size:11px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:6px;">Start Date</label>
-              <select class="form-control-mw">
+              <select name="start_date" class="form-control-mw">
                 <option value="">Flexible / to be confirmed</option>
                 <option>Immediate</option>
                 <option>Within 2 weeks</option>
@@ -230,8 +269,15 @@
               </select>
             </div>
 
-            <button type="submit" class="btn-copper" style="width:100%;justify-content:center;padding:14px;font-size:1rem;">Send Message <i class="bi bi-arrow-right ms-1"></i></button>
-            <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);text-align:center;margin-top:0.8rem;font-family:'JetBrains Mono',monospace;">I typically respond within 24 hours · London, UK timezone</p>
+            <button type="submit" id="submitBtn" class="btn-copper" style="width:100%;justify-content:center;padding:14px;font-size:1rem;">
+              Send Message <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+
+            <div id="formStatus"></div>
+
+            <p style="font-size:0.78rem;color:rgba(255,255,255,0.28);text-align:center;margin-top:0.8rem;font-family:'JetBrains Mono',monospace;">
+              I typically respond within 24 hours · London, UK timezone
+            </p>
           </form>
         </div>
       </div>
@@ -264,12 +310,12 @@
         <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;">Computer Vision</div>
       </div>
       <div class="col-md-4 col-lg-2 fade-up delay-2 text-center">
-        <div style="font-size:2rem;margin-bottom:0.4rem;">🏗️</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;">Digital Twins</div>
+        <div style="font-size:2rem;margin-bottom:0.4rem;">⚡</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;">FastAPI · MQTT</div>
       </div>
       <div class="col-md-4 col-lg-2 fade-up delay-3 text-center">
-        <div style="font-size:2rem;margin-bottom:0.4rem;">📚</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;">30+ Yrs Exp.</div>
+        <div style="font-size:2rem;margin-bottom:0.4rem;">🔄</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;">Digital Transformation</div>
       </div>
     </div>
   </div>
@@ -287,21 +333,21 @@
             <span class="brand-sub">BEng · MSc · London, UK</span>
           </div>
         </div>
-        <p style="font-size:0.86rem;line-height:1.8;color:rgba(255,255,255,0.5);">AI Engineer, Full-Stack Developer, IoT Specialist, Author and Course Creator with 30+ years of hands-on engineering experience.</p>
+        <p style="font-size:0.86rem;line-height:1.8;color:rgba(255,255,255,0.5);">AI-Powered Systems Engineer — Full-Stack Developer, IoT Specialist and Robotics Perception Engineer.</p>
       </div>
       <div class="col-lg-2 col-md-3 col-6">
         <div class="footer-heading">Navigation</div>
         <a href="about.html">About & CV</a>
         <a href="skills.html">Skills</a>
         <a href="projects.html">Projects</a>
-        <a href="speaking.html">Books & Speaking</a>
-        <a href="courses.html">Courses</a>
+        <a href="contact.html">Hire Me</a>
       </div>
       <div class="col-lg-2 col-md-3 col-6">
         <div class="footer-heading">Platforms</div>
         <a href="https://blackscientistsandinventors.com" target="_blank" rel="noopener">BSI Platform ↗</a>
-        <a href="https://wfincolour.streamlit.app/" target="_blank" rel="noopener">WF Exhibition App ↗</a>
+        <a href="https://wf-exhibition.com" target="_blank" rel="noopener">WF Exhibition App ↗</a>
         <a href="https://github.com/mikeconel" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://mikeconel.github.io/mw-portfolio/index.html" target="_blank" rel="noopener">Portfolio ↗</a>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="footer-heading">Open to Work</div>
@@ -319,26 +365,138 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-  // Contact form submit handler
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('[type=submit]');
-      const orig = btn.innerHTML;
-      btn.innerHTML = '✓ Message sent — I\'ll be in touch!';
-      btn.style.background = 'var(--sage)';
-      btn.style.borderColor = 'var(--sage)';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-        btn.style.borderColor = '';
-        btn.disabled = false;
-        form.reset();
-      }, 4000);
-    });
+/* ============================================================
+   CONTACT FORM — Bot protection + Formspree email delivery
+   ============================================================
+
+   SETUP REQUIRED:
+   1. Register free at https://formspree.io
+   2. Create a form, destination: mikieprophet@gmail.com
+   3. Replace 'YOUR_FORMSPREE_ID' below with your actual ID
+      (the part after /f/ in your endpoint URL)
+   ============================================================ */
+
+  const FORMSPREE_ID = 'mbdbooov'; // ← Replace this
+
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const statusBox  = document.getElementById('formStatus');
+  const pageLoadMs = Date.now();
+
+  // Client-side rate limiting: max 3 submissions per 10 minutes
+  function getRateData() {
+    try {
+      return JSON.parse(sessionStorage.getItem('_mw_rate') || '{"count":0,"window":0}');
+    } catch(e) { return {count:0,window:0}; }
   }
+  function setRateData(d) {
+    try { sessionStorage.setItem('_mw_rate', JSON.stringify(d)); } catch(e) {}
+  }
+
+  function showStatus(msg, type) {
+    statusBox.textContent = msg;
+    statusBox.className = type;
+    statusBox.style.display = 'block';
+  }
+
+  function clearErrors() {
+    form.querySelectorAll('.form-control-mw').forEach(el => el.classList.remove('error'));
+  }
+
+  function validateForm() {
+    let valid = true;
+    ['f-name','f-email','f-type','f-msg'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el || !el.value.trim()) {
+        el && el.classList.add('error');
+        valid = false;
+      }
+    });
+    // Basic email format check
+    const emailEl = document.getElementById('f-email');
+    if (emailEl && emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+      emailEl.classList.add('error');
+      valid = false;
+    }
+    return valid;
+  }
+
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      clearErrors();
+
+      // ── Bot check 1: honeypot ────────────────────────────────
+      const honeypot = form.querySelector('input[name="_gotcha"]');
+      if (honeypot && honeypot.value) {
+        // Silent rejection — bots shouldn't know they failed
+        showStatus('✓ Message sent — I\'ll be in touch!', 'success');
+        return;
+      }
+
+      // ── Bot check 2: time guard (< 3 seconds = likely bot) ──
+      if (Date.now() - pageLoadMs < 3000) {
+        showStatus('Please take a moment to fill in the form fully.', 'error');
+        return;
+      }
+
+      // ── Bot check 3: client-side rate limit ─────────────────
+      const now = Date.now();
+      let rd = getRateData();
+      if (now - rd.window > 10 * 60 * 1000) { rd = {count:0, window:now}; }
+      if (rd.count >= 3) {
+        showStatus('Too many messages sent. Please try again in a few minutes.', 'error');
+        return;
+      }
+
+      // ── Validation ────────────────────────────────────────────
+      if (!validateForm()) {
+        showStatus('Please fill in all required fields (*).', 'error');
+        return;
+      }
+
+// ── Submit via Formspree ─────────────────────────────────
+const btn = submitBtn;
+const origHTML = btn.innerHTML;
+btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+btn.disabled = true;
+statusBox.style.display = 'none';
+
+try {
+  const data = new FormData(form);
+  const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    rd.count += 1;
+    setRateData(rd);
+    showStatus('✓ Message sent! I\'ll be in touch within 24 hours.', 'success');
+    form.reset();
+    btn.innerHTML = '✓ Sent!';
+    btn.style.background = 'var(--sage)';
+    setTimeout(() => {
+      btn.innerHTML = origHTML;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  } else {
+    const result = await response.json();
+    const msg = result.errors ? result.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
+    showStatus('Error: ' + msg, 'error');
+    btn.innerHTML = origHTML;
+    btn.disabled = false;
+  }
+} catch(err) {
+  showStatus('Network error — please check your connection and try again.', 'error');
+  btn.innerHTML = origHTML;
+  btn.disabled = false; 
+}
+});
+    }
+  
 </script>
 </body>
 </html>
